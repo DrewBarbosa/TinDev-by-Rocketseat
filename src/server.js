@@ -4,10 +4,23 @@ const routes = require("./routes");
 
 const server = express();
 
+const dbRoute =
+  "mongodb+srv://drew:D36aVZvWQj7zFFiy@cluster0-ztfes.mongodb.net/tindev?retryWrites=true&w=majority";
+
 mongoose.connect(
-  "mongodb+srv://drew:PDrNunwcTfBpRS2J@cluster0-ztfes.mongodb.net/test?retryWrites=true&w=majority",
-  { useUnifiedTopology: true, useNewUrlParser: true }
+  dbRoute,
+  {
+    useUnifiedTopology: true,
+    useNewUrlParser: true
+  },
+  (err, res) => {
+    if (err) throw console.log(err);
+  }
 );
+
+let db = mongoose.connection;
+db.once("open", () => console.log("connected to the database"));
+
 server.use(express.json);
 server.use(routes);
 server.listen(5000);
