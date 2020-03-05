@@ -5,7 +5,7 @@ const routes = require("./routes");
 const server = express();
 
 const dbRoute =
-  "mongodb+srv://drew:D36aVZvWQj7zFFiy@cluster0-ztfes.mongodb.net/tindev?retryWrites=true&w=majority";
+  "mongodb+srv://drew:<password>@cluster0-ztfes.mongodb.net/tindev?retryWrites=true&w=majority";
 
 mongoose.connect(
   dbRoute,
